@@ -1,13 +1,17 @@
-# KVB Parser
+#KVB Parser
 
-A parser for the website of the KVB (http://www.kvb-koeln.de/) to fetch information about stations, lines and departures.
+A parser for the KVB website (http://www.kvb-koeln.de/) to fetch information about stations, lines and departures.
+
+###Technologies 
+
+- Retrofit (https://github.com/square/retrofit) to fetch the html files
+- RxJava (https://github.com/ReactiveX/RxJava) for the workflow
+- Jsoup (https://github.com/jhy/jsoup/) for the html parsing
 
 
-MASTER BRANCH
-======
+###MASTER BRANCH
 
 [![Build Status](https://travis-ci.org/MrDyro/kvb-parser.svg?branch=master)](https://travis-ci.org/MrDyro/kvb-parser)
-
 
 License
 =======
