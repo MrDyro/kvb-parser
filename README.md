@@ -3,6 +3,11 @@
 A parser for the website of the KVB (http://www.kvb-koeln.de/) to fetch information about stations, lines and departures.
 
 
+MASTER BRANCH
+======
+
+[![Build Status](https://travis-ci.org/MrDyro/kvb-parser.svg?branch=master)](https://travis-ci.org/MrDyro/kvb-parser)
+
 
 License
 =======
