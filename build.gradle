@@ -1,10 +1,17 @@
 apply plugin: 'java'
 
-buildscript {
-    repositories {
-        jcenter()
-    }
+repositories {
+    jcenter()
 }
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+jar {
+    baseName = 'kvb-parser'
+    version = '0.0.1'
+}
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
