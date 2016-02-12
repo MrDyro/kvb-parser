@@ -8,7 +8,7 @@ public class StationDetails extends Station {
 
     private final ImmutableList<Line> lines;
 
-    public StationDetails(final String id, final String name, List<Line> lines) {
+    public StationDetails(final String id, final String name, final List<Line> lines) {
         super(id, name);
 
         this.lines = ImmutableList.copyOf(lines);

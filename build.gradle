@@ -17,8 +17,9 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'org.jsoup:jsoup:1.8.1'
-    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxjava:1.1.1'
     compile 'com.google.guava:guava:19.0'
     compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
     compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
+    compile 'org.apache.commons:commons-lang3:3.4'
 }

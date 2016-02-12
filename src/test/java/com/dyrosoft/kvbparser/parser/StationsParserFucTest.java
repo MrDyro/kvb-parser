@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 public class StationsParserFucTest {
 
     @Test
-    public void testStationLinesParsingObjects() throws Exception {
+    public void testStationLinesParsingCount() throws Exception {
         Single.just(TestUtils.getTestHtmlFile(TestPages.STATIONS))
                 .flatMap(new StationsParserFuc())
                 .subscribe(new Action1<ImmutableList<Station>>() {
@@ -28,7 +28,7 @@ public class StationsParserFucTest {
     }
 
     @Test
-    public void testStationsParsingCount() throws Exception {
+    public void testStationsParsingObjects() throws Exception {
         Single.just(TestUtils.getTestHtmlFile(TestPages.STATIONS))
                 .flatMap(new StationsParserFuc())
                 .subscribe(new Action1<ImmutableList<Station>>() {

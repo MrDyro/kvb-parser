@@ -13,6 +13,10 @@ A parser for the KVB website (http://www.kvb-koeln.de/) to fetch information abo
 
 [![Build Status](https://travis-ci.org/MrDyro/kvb-parser.svg?branch=master)](https://travis-ci.org/MrDyro/kvb-parser)
 
+###DEVELOPMENT BRANCH
+
+[![Build Status](https://travis-ci.org/MrDyro/kvb-parser.svg?branch=development)](https://travis-ci.org/MrDyro/kvb-parser)
+
 License
 =======
 
