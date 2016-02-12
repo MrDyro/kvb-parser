@@ -44,6 +44,13 @@ public class DeparturesParserFuncTest {
 
                         final Line line = departure.getLine();
                         assertThat(line.getId(), is("E"));
+
+                        final Departure departure2 = departures.get(19);
+                        assertThat(departure2.getDirection(), is("Bensberg"));
+                        assertThat(departure2.getWaitTime(), is("51 Min"));
+
+                        final Line line2 = departure2.getLine();
+                        assertThat(line2.getId(), is("1"));
                     }
                 });
     }
