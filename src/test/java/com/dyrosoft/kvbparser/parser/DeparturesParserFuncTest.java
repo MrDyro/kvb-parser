@@ -1,6 +1,7 @@
 package com.dyrosoft.kvbparser.parser;
 
 import com.dyrosoft.kvbparser.TestPages;
+import com.dyrosoft.kvbparser.TestUtils;
 import com.dyrosoft.kvbparser.models.Departure;
 import com.dyrosoft.kvbparser.models.Line;
 import com.google.common.collect.ImmutableList;
@@ -15,42 +16,38 @@ import static org.junit.Assert.assertThat;
 
 public class DeparturesParserFuncTest {
 
-    public DeparturesParserFuncTest() {
-        super();
-    }
-
     @Test
     public void testDeparturesParsingCount() throws Exception {
-        Single.just(TestPages.DEPARTURES)
+        Single.just(TestUtils.getTestHtmlFile(TestPages.DEPARTURES))
                 .flatMap(new DeparturesParserFunc())
                 .subscribe(new Action1<ImmutableList<Departure>>() {
                     @Override
                     public void call(final ImmutableList<Departure> departures) {
-                        assertThat(departures.size(), is(20));
+                        assertThat(departures.size(), is(90));
                     }
                 });
     }
 
     @Test
     public void testDeparturesParsingObjects() throws Exception {
-        Single.just(TestPages.DEPARTURES)
+        Single.just(TestUtils.getTestHtmlFile(TestPages.DEPARTURES))
                 .flatMap(new DeparturesParserFunc())
                 .subscribe(new Action1<ImmutableList<Departure>>() {
                     @Override
                     public void call(final ImmutableList<Departure> departures) {
                         final Departure departure = departures.get(0);
-                        assertThat(departure.getDirection(), is("Fahrt endet hier"));
-                        assertThat(departure.getWaitTime(), is("3 Min"));
+                        assertThat(departure.getDirection(), is("Siehe Zugziel"));
+                        assertThat(departure.getWaitTime(), is("Sofort"));
 
                         final Line line = departure.getLine();
                         assertThat(line.getId(), is("E"));
 
-                        final Departure departure2 = departures.get(19);
-                        assertThat(departure2.getDirection(), is("Bensberg"));
-                        assertThat(departure2.getWaitTime(), is("51 Min"));
+                        final Departure departure2 = departures.get(89);
+                        assertThat(departure2.getDirection(), is("Meschenich"));
+                        assertThat(departure2.getWaitTime(), is("64 Min"));
 
                         final Line line2 = departure2.getLine();
-                        assertThat(line2.getId(), is("1"));
+                        assertThat(line2.getId(), is("132"));
                     }
                 });
     }
