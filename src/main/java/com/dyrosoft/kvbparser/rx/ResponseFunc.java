@@ -1,5 +1,6 @@
 package com.dyrosoft.kvbparser.rx;
 
+import com.dyrosoft.kvbparser.utils.StringUtils;
 import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class ResponseFunc implements Func1<Response<ResponseBody>, Single<String
     public Single<String> call(final Response<ResponseBody> response) {
         if (response.isSuccess()) {
             try {
-                return Single.just(response.body().string());
+                return Single.just(StringUtils.convertToUtf8(response.body().string()));
             } catch (IOException e) {
                 return Single.error(e);
             }

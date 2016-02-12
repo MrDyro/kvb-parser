@@ -21,6 +21,6 @@ public class TestUtils {
         }
 
         final File file = new File(url.getPath());
-        return Files.toString(file, Charsets.UTF_8);
+        return Files.toString(file, Charsets.ISO_8859_1);
     }
 }
