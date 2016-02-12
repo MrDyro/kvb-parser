@@ -1,7 +1,8 @@
-package com.dyrosoft.kvbparser;
+package com.dyrosoft.kvbparser.parser;
 
 import com.dyrosoft.kvbparser.models.Departure;
 import com.dyrosoft.kvbparser.models.Line;
+import com.dyrosoft.kvbparser.utils.StringUtils;
 import com.google.common.collect.ImmutableList;
 
 import org.jsoup.Jsoup;
@@ -9,12 +10,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import rx.Single;
-import rx.functions.Func1;
+public class DeparturesParserFunc extends AbstractRxHtmlParserFunc<ImmutableList<Departure>> {
 
-class DeparturesParserFunc implements Func1<String, Single<ImmutableList<Departure>>> {
     @Override
-    public Single<ImmutableList<Departure>> call(final String html) {
+    protected ImmutableList<Departure> parse(final String html) {
         final ImmutableList.Builder<Departure> builder = ImmutableList.builder();
 
         final Document document = Jsoup.parse(html);
@@ -22,12 +21,11 @@ class DeparturesParserFunc implements Func1<String, Single<ImmutableList<Departu
         for (final Element tr : elements.get(1).getElementsByTag("tr")) {
             final Elements tds = tr.getElementsByTag("td");
             final Departure departure =
-                    new Departure(new Line(tds.get(0).text().trim()),
-                                  tds.get(1).text().trim(),
-                                  tds.get(2).text().trim());
+                    new Departure(new Line(StringUtils.advacedTrim(tds.get(0).text())),
+                                  StringUtils.advacedTrim(tds.get(1).text()),
+                                  StringUtils.advacedTrim(tds.get(2).text()));
             builder.add(departure);
         }
-
-        return Single.just(builder.build());
+        return builder.build();
     }
 }

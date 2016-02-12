@@ -1,4 +1,4 @@
-package com.dyrosoft.kvbparser;
+package com.dyrosoft.kvbparser.parser;
 
 import com.dyrosoft.kvbparser.models.Station;
 import com.google.common.base.Strings;
@@ -12,13 +12,10 @@ import org.jsoup.select.Elements;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import rx.Single;
-import rx.functions.Func1;
-
-class StationsParserFuc implements Func1<String, Single<ImmutableList<Station>>> {
+public class StationsParserFuc extends AbstractRxHtmlParserFunc<ImmutableList<Station>> {
 
     @Override
-    public Single<ImmutableList<Station>> call(final String html) {
+    protected ImmutableList<Station> parse(final String html) {
         final ImmutableList.Builder<Station> builder = ImmutableList.builder();
 
         final Document document = Jsoup.parse(html);
@@ -41,6 +38,6 @@ class StationsParserFuc implements Func1<String, Single<ImmutableList<Station>>>
             builder.add(new Station(id, element.text()));
         }
 
-        return Single.just(builder.build());
+        return builder.build();
     }
 }

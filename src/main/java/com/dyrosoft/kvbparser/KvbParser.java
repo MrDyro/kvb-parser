@@ -5,6 +5,9 @@ import com.dyrosoft.kvbparser.api.KvbApi;
 import com.dyrosoft.kvbparser.models.Departure;
 import com.dyrosoft.kvbparser.models.Station;
 import com.dyrosoft.kvbparser.models.StationDetails;
+import com.dyrosoft.kvbparser.parser.DeparturesParserFunc;
+import com.dyrosoft.kvbparser.parser.StationLinesParserFuc;
+import com.dyrosoft.kvbparser.parser.StationsParserFuc;
 import com.dyrosoft.kvbparser.rx.ResponseFunc;
 import com.google.common.collect.ImmutableList;
 

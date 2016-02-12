@@ -9,6 +9,10 @@ build
 out
 lib
 
+.gradle
+gradle
+gradlew
+gradlew.bat
 target
 pom.xml.*
 release.properties
