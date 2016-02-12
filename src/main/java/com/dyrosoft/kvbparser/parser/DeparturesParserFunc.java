@@ -21,9 +21,9 @@ public class DeparturesParserFunc extends AbstractRxHtmlParserFunc<ImmutableList
         for (final Element tr : elements.get(1).getElementsByTag("tr")) {
             final Elements tds = tr.getElementsByTag("td");
             final Departure departure =
-                    new Departure(new Line(StringUtils.advacedTrim(tds.get(0).text())),
-                                  StringUtils.advacedTrim(tds.get(1).text()),
-                                  StringUtils.advacedTrim(tds.get(2).text()));
+                    new Departure(new Line(StringUtils.advancedTrim(tds.get(0).text())),
+                                  StringUtils.advancedTrim(tds.get(1).text()),
+                                  StringUtils.advancedTrim(tds.get(2).text()));
             builder.add(departure);
         }
         return builder.build();

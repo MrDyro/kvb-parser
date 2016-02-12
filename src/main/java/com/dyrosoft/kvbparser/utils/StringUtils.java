@@ -2,7 +2,10 @@ package com.dyrosoft.kvbparser.utils;
 
 public class StringUtils {
 
-    public static String advacedTrim(final String toTrim) {
+    private StringUtils() {
+    }
+
+    public static String advancedTrim(final String toTrim) {
         if (toTrim == null) {
             return null;
         }
