@@ -2,10 +2,11 @@ package com.dyrosoft.kvbparser;
 
 import com.dyrosoft.kvbparser.api.ApiProvider;
 import com.dyrosoft.kvbparser.api.KvbApi;
-import com.dyrosoft.kvbparser.models.Departure;
+import com.dyrosoft.kvbparser.merger.DeparturesMergerTransformer;
+import com.dyrosoft.kvbparser.merger.StationWithLineMergerFunc;
+import com.dyrosoft.kvbparser.models.Departures;
 import com.dyrosoft.kvbparser.models.Station;
 import com.dyrosoft.kvbparser.models.StationDetails;
-import com.dyrosoft.kvbparser.parser.DeparturesParserFunc;
 import com.dyrosoft.kvbparser.parser.StationLinesParserFuc;
 import com.dyrosoft.kvbparser.parser.StationsParserFuc;
 import com.dyrosoft.kvbparser.rx.ResponseFunc;
@@ -31,18 +32,19 @@ public class KvbParser {
                 .subscribeOn(Schedulers.io());
     }
 
-    public Single<ImmutableList<Departure>> fetchDepartures(final Station station) {
+    public Single<Departures> fetchDepartures(final Station station) {
         return api.queryDepartures(station.getId())
                 .flatMap(responseFunc)
-                .flatMap(new DeparturesParserFunc())
+                .compose(new DeparturesMergerTransformer())
                 .subscribeOn(Schedulers.io());
     }
 
     public Single<StationDetails> fetchStationDetail(final Station station) {
-        return api.queryStationDetail(station.getId())
-                .flatMap(responseFunc)
-                .flatMap(new StationLinesParserFuc())
-                .flatMap(new StationWithLineMergerFunc(station))
+        return Single.zip(api.queryStationDetail(station.getId())
+                                  .flatMap(responseFunc)
+                                  .flatMap(new StationLinesParserFuc()),
+                          Single.just(station),
+                          new StationWithLineMergerFunc())
                 .subscribeOn(Schedulers.io());
     }
 }
