@@ -9,7 +9,7 @@ targetCompatibility = 1.7
 
 jar {
     baseName = 'kvb-parser'
-    version = '0.0.1'
+    version = '0.1.0'
 }
 
 
