@@ -24,21 +24,21 @@ public class KvbParser {
         responseFunc = new ResponseFunc();
     }
 
-    public Single<ImmutableList<Station>> getAllStations() {
+    public Single<ImmutableList<Station>> fetchAllStations() {
         return api.queryStations()
                 .flatMap(responseFunc)
                 .flatMap(new StationsParserFuc())
                 .subscribeOn(Schedulers.io());
     }
 
-    public Single<ImmutableList<Departure>> getDepartures(final Station station) {
+    public Single<ImmutableList<Departure>> fetchDepartures(final Station station) {
         return api.queryDepartures(station.getId())
                 .flatMap(responseFunc)
                 .flatMap(new DeparturesParserFunc())
                 .subscribeOn(Schedulers.io());
     }
 
-    public Single<StationDetails> getStationDetail(final Station station) {
+    public Single<StationDetails> fetchStationDetail(final Station station) {
         return api.queryStationDetail(station.getId())
                 .flatMap(responseFunc)
                 .flatMap(new StationLinesParserFuc())
