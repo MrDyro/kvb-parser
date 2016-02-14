@@ -1,11 +1,11 @@
 package com.dyrosoft.kvbparser.rx;
 
-import com.dyrosoft.kvbparser.utils.StringUtils;
-import com.squareup.okhttp.ResponseBody;
+import com.google.common.base.Charsets;
 
 import java.io.IOException;
 
-import retrofit.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 import rx.Single;
 import rx.functions.Func1;
 
@@ -15,7 +15,7 @@ public class ResponseFunc implements Func1<Response<ResponseBody>, Single<String
     public Single<String> call(final Response<ResponseBody> response) {
         if (response.isSuccess()) {
             try {
-                return Single.just(StringUtils.convertToUtf8(response.body().string()));
+                return Single.just(new String(response.body().bytes(), Charsets.ISO_8859_1));
             } catch (IOException e) {
                 return Single.error(e);
             }

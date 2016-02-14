@@ -1,14 +1,13 @@
 package com.dyrosoft.kvbparser.api;
 
-import com.squareup.okhttp.Interceptor;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-
 import java.io.IOException;
 
-import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 public final class ApiProvider {
 
@@ -39,10 +38,11 @@ public final class ApiProvider {
     }
 
     private static Retrofit buildRetrofit() {
-        final OkHttpClient client = new OkHttpClient();
-        client.interceptors().add(new HeaderInterceptor());
-        final String endpoint = BASE_URL;
+        final OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(new HeaderInterceptor())
+                .build();
 
+        final String endpoint = BASE_URL;
         return new Retrofit.Builder()
                 .baseUrl(endpoint)
                 .client(client)
