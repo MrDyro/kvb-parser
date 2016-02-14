@@ -1,7 +1,5 @@
 package com.dyrosoft.kvbparser.utils;
 
-import com.google.common.base.Charsets;
-
 public class StringUtils {
 
     private StringUtils() {
@@ -13,10 +11,5 @@ public class StringUtils {
         }
 
         return toTrim.replace(String.valueOf((char) 160), " ").trim();
-    }
-
-    public static String convertToUtf8(final String isoLatin1String) {
-        final byte[] isoBytes = isoLatin1String.getBytes(Charsets.ISO_8859_1);
-        return new String(isoBytes, Charsets.UTF_8);
     }
 }

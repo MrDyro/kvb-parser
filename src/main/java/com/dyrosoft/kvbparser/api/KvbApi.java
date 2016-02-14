@@ -1,10 +1,9 @@
 package com.dyrosoft.kvbparser.api;
 
-import com.squareup.okhttp.ResponseBody;
-
-import retrofit.Response;
-import retrofit.http.GET;
-import retrofit.http.Path;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
 import rx.Single;
 
 public interface KvbApi {
