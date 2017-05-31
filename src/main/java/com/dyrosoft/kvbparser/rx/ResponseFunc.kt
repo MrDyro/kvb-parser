@@ -6,7 +6,7 @@ import rx.Single
 import rx.functions.Func1
 import java.io.IOException
 
-class ResponseFunc : Func1<Response<ResponseBody>, Single<String>> {
+internal class ResponseFunc : Func1<Response<ResponseBody>, Single<String>> {
 
     override fun call(response: Response<ResponseBody>): Single<String> {
         if (response.isSuccessful && response.body() != null) {

@@ -6,7 +6,7 @@ import com.dyrosoft.kvbparser.utils.StringUtils
 import io.multifunctions.letNotNull
 import org.jsoup.Jsoup
 
-class DeparturesParserFunc : AbstractRxHtmlParserFunc<List<Departure>>() {
+internal class DeparturesParserFunc : AbstractRxHtmlParserFunc<List<Departure>>() {
 
     override fun parse(html: String): List<Departure> {
         val list = mutableListOf<Departure>()

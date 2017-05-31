@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import java.io.IOException
 
-object ApiProvider {
+internal object ApiProvider {
 
     private class HeaderInterceptor : Interceptor {
 

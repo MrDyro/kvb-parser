@@ -5,7 +5,7 @@ import com.dyrosoft.kvbparser.parser.DepartureInformationParserFunc
 import com.dyrosoft.kvbparser.parser.DeparturesParserFunc
 import rx.Single
 
-class DeparturesMergerTransformer : Single.Transformer<String, Departures> {
+internal class DeparturesMergerTransformer : Single.Transformer<String, Departures> {
 
     override fun call(htmlSingle: Single<String>): Single<Departures> {
         return Single.zip(htmlSingle.flatMap(DeparturesParserFunc()),

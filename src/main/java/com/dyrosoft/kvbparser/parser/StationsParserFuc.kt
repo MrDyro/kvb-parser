@@ -4,7 +4,7 @@ import com.dyrosoft.kvbparser.models.Station
 import org.jsoup.Jsoup
 import java.util.regex.Pattern
 
-class StationsParserFuc : AbstractRxHtmlParserFunc<List<Station>>() {
+internal class StationsParserFuc : AbstractRxHtmlParserFunc<List<Station>>() {
 
     override fun parse(html: String): List<Station> {
         val list = mutableListOf<Station>()

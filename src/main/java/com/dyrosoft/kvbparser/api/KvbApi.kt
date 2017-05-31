@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import rx.Single
 
-interface KvbApi {
+internal interface KvbApi {
 
     @GET("qr/{stationId}/")
     fun queryDepartures(@Path("stationId") stationId: String): Single<Response<ResponseBody>>
