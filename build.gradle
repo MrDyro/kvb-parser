@@ -39,3 +39,10 @@ buildscript {
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
     }
 }
+
+task fatJar(type: Jar) {
+    baseName = project.name + '-fat'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+build.dependsOn fatJar
