@@ -3,10 +3,10 @@ package com.dyrosoft.kvbparser;
 import com.dyrosoft.kvbparser.models.Departures;
 import com.dyrosoft.kvbparser.models.Station;
 import com.dyrosoft.kvbparser.models.StationDetails;
-import com.google.common.collect.ImmutableList;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
@@ -19,7 +19,7 @@ public class KvbParserTest {
     public void testFetchAllStations() throws Exception {
         final KvbParser parser = new KvbParser();
 
-        final ImmutableList<Station> stations = parser.fetchAllStations().toBlocking().value();
+        final List<Station> stations = parser.fetchAllStations().toBlocking().value();
 
         assertThat(stations.isEmpty(), is(not(true)));
     }
