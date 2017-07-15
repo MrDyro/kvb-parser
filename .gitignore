@@ -21,6 +21,8 @@ release.properties
 *.iml
 classes
 
+local.properties
+
 obj
 
 .DS_Store
