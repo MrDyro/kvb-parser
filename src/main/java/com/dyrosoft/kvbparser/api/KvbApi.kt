@@ -11,13 +11,13 @@ internal interface KvbApi {
     @GET("qr/{stationId}/")
     fun queryDepartures(@Path("stationId") stationId: String): Single<Response<ResponseBody>>
 
-    @GET("german/hst/showline/{stationId}/{lineId}/")
+    @GET("haltestellen/showline/{stationId}/{lineId}/")
     fun queryLineDetails(@Path("stationId") stationId: String,
                          @Path("lineId") lineId: String): Single<Response<ResponseBody>>
 
-    @GET("german/hst/overview/{stationId}/")
+    @GET("haltestellen/overview/{stationId}/")
     fun queryStationDetail(@Path("stationId") stationId: String): Single<Response<ResponseBody>>
 
-    @GET("german/hst/overview/")
+    @GET("haltestellen/overview/")
     fun queryStations(): Single<Response<ResponseBody>>
 }

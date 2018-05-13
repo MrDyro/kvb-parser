@@ -18,12 +18,9 @@ public class DeparturesTransformerTest {
     public void testTransformation() throws Exception {
         Single.just(TestUtils.getTestHtmlFile(TestPages.DEPARTURES))
                 .compose(new DeparturesMergerTransformer())
-                .subscribe(new Action1<Departures>() {
-                    @Override
-                    public void call(final Departures departures) {
-                        assertThat(departures.getDepartureInformation().size(), is(1));
-                        assertThat(departures.getDepartures().size(), is(90));
-                    }
+                .subscribe(departures -> {
+                    assertThat(departures.getDepartureInformation().size(), is(1));
+                    assertThat(departures.getDepartures().size(), is(47));
                 });
     }
 }

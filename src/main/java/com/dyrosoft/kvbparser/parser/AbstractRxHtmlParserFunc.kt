@@ -3,7 +3,7 @@ package com.dyrosoft.kvbparser.parser
 import rx.Single
 import rx.functions.Func1
 
-internal abstract class AbstractRxHtmlParserFunc<T> : Func1<String, Single<T>> {
+abstract class AbstractRxHtmlParserFunc<T> : Func1<String, Single<T>> {
 
     override fun call(html: String): Single<T> = Single.just(parse(html))
 
