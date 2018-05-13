@@ -4,7 +4,7 @@ import com.dyrosoft.kvbparser.models.Station
 import org.jsoup.Jsoup
 import java.util.regex.Pattern
 
-internal class StationsParserFuc : AbstractRxHtmlParserFunc<List<Station>>() {
+class StationsParserFuc : AbstractRxHtmlParserFunc<List<Station>>() {
 
     override fun parse(html: String): List<Station> {
         val list = mutableListOf<Station>()
@@ -16,13 +16,13 @@ internal class StationsParserFuc : AbstractRxHtmlParserFunc<List<Station>>() {
                 continue
             }
 
-            val pattern = Pattern.compile("/german/hst/overview/(\\d+)/")
+            val pattern = Pattern.compile("/haltestellen/overview/(\\d+)/")
             val matcher = pattern.matcher(href)
             if (!matcher.matches()) {
                 continue
             }
 
-            val id = href.replace("german/hst/overview/", "").replace("/", "")
+            val id = href.replace("haltestellen/overview/", "").replace("/", "")
 
             list.add(Station(id, element.text()))
         }

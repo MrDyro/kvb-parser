@@ -11,7 +11,6 @@ internal object ApiProvider {
 
     private class HeaderInterceptor : Interceptor {
 
-        @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): Response =
                 chain.proceed(chain.request()
                                       .newBuilder()
@@ -23,7 +22,7 @@ internal object ApiProvider {
         }
     }
 
-    private const val BASE_URL = "http://www.kvb-koeln.de/"
+    private const val BASE_URL = "https://www.kvb.koeln/"
 
     val kvbApi: KvbApi
         get() = buildRetrofit().create(KvbApi::class.java)
